@@ -32,6 +32,7 @@ display_box.setAttribute("id", "result_box");
 
 
 
+
 const add = (num1, num2) => num1 + num2;
 
 const subtract = (num1, num2) => num1 - num2;
@@ -40,33 +41,34 @@ const multiply = (num1, num2) => num1 * num2;
 
 const divide = (num1, num2) => num1 / num2;
 
+//add event listeners according to the buttons made in lines 3,7,11,15
+add_button.addEventListener("click", () => operate('add'));
+subtract_button.addEventListener("click", () => operate('subtract'));
+multiply_button.addEventListener("click", () => operate('multiply'));
+divide_button.addEventListener("click", () => operate('divide'));
 
+// Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
+
+const operate = () => {
+    const num1 = parseFloat(input1.value);
+    const num2 = parseFloat(input2.value);
+
+    switch(operate){
+        case "add":
+            return add(num1,num2);
+        case "subtract":
+            return subtract(num1,num2);
+        case "multiply":
+            return multiply(num1,num2);
+        case "divide":
+            return divide(num1,num2);
+        default:
+            alert("Invalid operator")
+            return;
+    }
+
+} 
 const main = () => {
-    //add event listeners according to the buttons made in lines 3,7,11,15
-    add_button.addEventListener("click", () => {
-        //add trial and error later
-        const num1 = parseFloat(input1.value);
-        const num2 = parseFloat(input2.value);
-
-        const result = add(num1,num2);
-        display_box.textContent = `Result: ${result}`;
-    })
-    subtract_button.addEventListener("click", () => {
-        //add trial and error later
-        const num1 = parseFloat(input1.value);
-        const num2 = parseFloat(input2.value);
-
-        const result = subtract(num1,num2);
-        display_box.textContent = `Result: ${result}`;
-    })
-    multiply_button.addEventListener("click", () => {
-        //add trial and error later
-        const num1 = parseFloat(input1.value);
-        const num2 = parseFloat(input2.value);
-
-        const result = multiply(num1,num2);
-        display_box.textContent = `Result: ${result}`;
-    })
     divide_button.addEventListener("click", () => {
         //add trial and error later
         const num1 = parseFloat(input1.value);
