@@ -28,29 +28,18 @@ input2.setAttribute("id", "input2");
 
 
 
-const add = (num1, num2) => {
-    return num1 + num2;
-}
+const add = (num1, num2) => num1 + num2;
 
-const subtract = (num1, num2) => {
-    return num1 - num2;
-}
+const subtract = (num1, num2) => num1 - num2;
 
-const multiply = (num1, num2) => {
-    return num1 * num2;
-}
+const multiply = (num1, num2) => num1 * num2;
 
-const divide = (num1, num2) => {
-    return num1 / num2;
-}
+const divide = (num1, num2) => num1 / num2;
+
 
 const main = () => {
 
 }
-// A calculator operation will consist of a number, an operator, and another number.
-//  For example, 3 + 5. Create three variables for each of the parts of a calculator operation. 
-//  Create a variable for the first number, the operator, and the second number. 
-//  You’ll use these variables to update your display later.
 
 // console.log(add(2,3));
 // console.log(subtract(2,3));
