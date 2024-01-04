@@ -71,12 +71,12 @@ append_to_display = (value) => { //value contains the value that has been input 
         num1 = parseFloat(current_value);
         // console.log("TEST")
         operator = value;
-        current_value = ""; //resets to empty string
+        clear_display(); //resets to empty string
     } 
     else if(value === "="){
         num2 = parseFloat(current_value);
-        console.log(num2);
-        console.log(operate());
+        // console.log(num2);
+        document.getElementById("display").value = operate();
     }
    
 }
