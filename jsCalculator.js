@@ -16,6 +16,16 @@ const divide_button = document.createElement("button");
 divide_button.textContent = "/";
 divide_button.setAttribute("id", "divide_btn");
 
+//create input tag for user to enter numbers they like
+
+const input1 = document.createElement("input");
+input1.textContent = "Enter a number";
+input1.setAttribute("id", "input1");
+
+const input2 = document.createElement("input");
+input2.textContent = "Enter another number";
+input2.setAttribute("id", "input2");
+
 
 
 const add = (num1, num2) => {
@@ -46,6 +56,9 @@ const main = () => {
 // console.log(subtract(2,3));
 // console.log(multiply(2,3));
 // console.log(divide(2,3));
+
+document.body.append(input1);
+document.body.append(input2);
 
 document.body.append(add_button);
 document.body.append(subtract_button);
