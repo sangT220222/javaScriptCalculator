@@ -26,6 +26,10 @@ const input2 = document.createElement("input");
 input2.textContent = "Enter another number";
 input2.setAttribute("id", "input2");
 
+const display_box = document.createElement("div");
+display_box.textContent = "Result: 0";
+display_box.setAttribute("id", "result_box");
+
 
 
 const add = (num1, num2) => num1 + num2;
@@ -38,7 +42,39 @@ const divide = (num1, num2) => num1 / num2;
 
 
 const main = () => {
+    //add event listeners according to the buttons made in lines 3,7,11,15
+    add_button.addEventListener("click", () => {
+        //add trial and error later
+        const num1 = parseFloat(input1.value);
+        const num2 = parseFloat(input2.value);
 
+        const result = add(num1,num2);
+        display_box.textContent = `Result: ${result}`;
+    })
+    subtract_button.addEventListener("click", () => {
+        //add trial and error later
+        const num1 = parseFloat(input1.value);
+        const num2 = parseFloat(input2.value);
+
+        const result = subtract(num1,num2);
+        display_box.textContent = `Result: ${result}`;
+    })
+    multiply_button.addEventListener("click", () => {
+        //add trial and error later
+        const num1 = parseFloat(input1.value);
+        const num2 = parseFloat(input2.value);
+
+        const result = multiply(num1,num2);
+        display_box.textContent = `Result: ${result}`;
+    })
+    divide_button.addEventListener("click", () => {
+        //add trial and error later
+        const num1 = parseFloat(input1.value);
+        const num2 = parseFloat(input2.value);
+
+        const result = divide(num1,num2);
+        display_box.textContent = `Result: ${result}`;
+    })
 }
 
 // console.log(add(2,3));
@@ -53,3 +89,7 @@ document.body.append(add_button);
 document.body.append(subtract_button);
 document.body.append(multiply_button);
 document.body.append(divide_button);
+
+document.body.append(display_box);
+
+main();
