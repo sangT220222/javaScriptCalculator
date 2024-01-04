@@ -61,7 +61,12 @@ const operate = () => {
 var current_value = ""; //this will contain the final number we want to add
 
 append_to_display = (value) => { //value contains the value that has been input by a click
-    if( value === "+" || value === "-" || value === "*" || value === "/") {
+    if (!isNaN(value) || value === ".") {
+        current_value += value;
+        document.getElementById("display").value += value;
+    } 
+
+    else if( value === "+" || value === "-" || value === "*" || value === "/") {
         // document.getElementById("display").value += current_value;
         num1 = parseFloat(current_value);
         // console.log("TEST")
@@ -73,10 +78,7 @@ append_to_display = (value) => { //value contains the value that has been input 
         console.log(num2);
         console.log(operate());
     }
-    else {
-        current_value += value;
-    }
-    document.getElementById("display").value += value;
+   
 }
 
 //add event listeners according to the buttons made in lines 3,7,11,15
