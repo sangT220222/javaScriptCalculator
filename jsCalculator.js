@@ -62,13 +62,27 @@ const operate = () => {
         default:
             alert("Invalid operator")
             return;
-    }
-
+    }               
 } 
 
-appendToDisplay = (value) => document.getElementById('display').value += value;
+var current_value = "";
 
-clearDisplay = () => document.getElementById('display').value = '';
+appendToDisplay = (value) => {
+    if( value === "+" || value === "-" || value === "*" || value === "/") {
+        document.getElementById("display").value += current_value + value;
+        current_value = ""; //resets to empty string
+    } else {
+        current_value += value;
+    }
+    document.getElementById("display").value += value;
+}
+
+
+clearDisplay = () => {
+    current_value = "";
+    document.getElementById("display").value = "";
+}
+
   
 // console.log(add(2,3));
 // console.log(subtract(2,3));
