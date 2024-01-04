@@ -2,12 +2,20 @@
 
 const add_button = document.createElement("button");
 add_button.textContent = "+";
+add_button.setAttribute("id", "add_btn");
+
 const subtract_button = document.createElement("button");
 subtract_button.textContent = "-";
+subtract_button.setAttribute("id", "sub_btn");
+
 const multiply_button = document.createElement("button");
 multiply_button.textContent = "*";
+multiply_button.setAttribute("id", "times_btn");
+
 const divide_button = document.createElement("button");
 divide_button.textContent = "/";
+divide_button.setAttribute("id", "divide_btn");
+
 
 
 const add = (num1, num2) => {
@@ -27,7 +35,7 @@ const divide = (num1, num2) => {
 }
 
 const main = () => {
-    
+
 }
 // A calculator operation will consist of a number, an operator, and another number.
 //  For example, 3 + 5. Create three variables for each of the parts of a calculator operation. 
