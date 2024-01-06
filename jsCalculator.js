@@ -63,7 +63,7 @@ var current_value = ""; //this will contain the final number we want to add
 append_to_display = (value) => { //value contains the value that has been input by a click
     if (!isNaN(value) || value === ".") {
         current_value += value;
-        document.getElementById("display").value += value;
+        document.getElementById("display").value = current_value;
     } 
 
     else if( value === "+" || value === "-" || value === "*" || value === "/") {
