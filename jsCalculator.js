@@ -38,7 +38,7 @@ const multiply = (num1, num2) => num1 * num2;
 
 const divide = (num1, num2) => num1 / num2;
 
-var num1 = null, num2 = null, operator = null;
+var num1 = null, num2 = null, operator = null, num1_input = true; //introduced num1=input as true so we can keep track if it's 1st number input
 
 // Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
 
@@ -68,17 +68,44 @@ append_to_display = (value) => { //value contains the value that has been input 
 
     else if( value === "+" || value === "-" || value === "*" || value === "/") {
         // document.getElementById("display").value += current_value;
-        num1 = parseFloat(current_value);
-        // console.log("TEST")
-        operator = value;
-        clear_display(); //resets to empty string
+        //bottom if block is for the very first number only
+        if(num1 === null && num1_input){ //checks if num1 is not null and num1_input is true
+            num1_input = false;
+            num1 = parseFloat(current_value);
+            // console.log("TEST")
+            operator = value;
+            // console.log("This is 1: " + num1.toString());
+            // console.log("This is 2: " + num2);
+            current_value = "";
+        }
+        //block below is for the input of the "2nd number"
+        else if (num1 !== null && !num1_input) { //checks if num1 is not null and the check is empty or not
+            num2 = parseFloat(current_value);
+            // console.log("This is 2nd input: " + num2.toString());
+            const result = operate();
+            document.getElementById("display").value = result;
+            num1 = result; //here num1 will always be the "result" that will be used as num1
+            // console.log("This is result which will be added: " + num1.toString());
+            current_value = ""; //resets the current value so that num2 will have a fresh new number after a new one is pressed
+        }
+        
     } 
     else if(value === "="){
-        num2 = parseFloat(current_value);
-        // console.log(num2);
-        document.getElementById("display").value = operate();
+        if(num1 != null){
+            num2 = parseFloat(current_value);
+            // console.log(num2);
+            console.log("This is 1: " + num1.toString());
+            console.log("This is 2: " + num2.toString());
+            num1 = operate();
+            console.log("num1: "+ num1.toString());
+            console.log("num2: "+ num2.toString())
+            document.getElementById("display").value = num1;
+            // current_value = result.toString();  
+        }
+        num1_input = true;
     }
-   
+
+   //sort logic out so it can add stuff up for more than 2 numbers!
 }
 
 //add event listeners according to the buttons made in lines 3,7,11,15
