@@ -38,7 +38,7 @@ const multiply = (num1, num2) => num1 * num2;
 
 const divide = (num1, num2) => num1 / num2;
 
-var num1 = null, num2 = null, operator = null, num1_input = true; //introduced num1=input as true so we can keep track if it's 1st number input
+var num1 = null, num2 = null, operator = null, result = null, num1_input = true; //introduced num1=input as true so we can keep track if it's 1st number input
 
 // Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
 
@@ -82,7 +82,7 @@ append_to_display = (value) => { //value contains the value that has been input 
         else if (num1 !== null && !num1_input) { //checks if num1 is not null and the check is empty or not
             num2 = parseFloat(current_value);
             // console.log("This is 2nd input: " + num2.toString());
-            const result = operate();
+            result = operate();
             document.getElementById("display").value = result;
             num1 = result; //here num1 will always be the "result" that will be used as num1
             // console.log("This is result which will be added: " + num1.toString());
@@ -91,17 +91,11 @@ append_to_display = (value) => { //value contains the value that has been input 
         
     } 
     else if(value === "="){
-        if(num1 != null){
-            num2 = parseFloat(current_value);
-            // console.log(num2);
-            console.log("This is 1: " + num1.toString());
-            console.log("This is 2: " + num2.toString());
-            num1 = operate();
-            console.log("num1: "+ num1.toString());
-            console.log("num2: "+ num2.toString())
-            document.getElementById("display").value = num1;
-            // current_value = result.toString();  
-        }
+        num2 = parseFloat(current_value);
+        // console.log("This is 2nd input: " + num2.toString());
+        result = operate();
+        num1 = result;
+        document.getElementById("display").value = result;
         num1_input = true;
     }
 
