@@ -1,4 +1,10 @@
 var display = document.getElementById("display");
+
+const add_btn = document.getElementById("add_button");
+const subtract_btn = document.getElementById("subtract_button");
+const multiply_btn = document.getElementById("multiply_button");
+const divide_btn = document.getElementById("divide_button");
+
 // object to manage inputs
 const calculator = {
     input1: '',
@@ -39,6 +45,20 @@ number_to_display = (number) =>
     //stores number clicked in increment so in 'input1' of object if operator isn't defined, else store in input2
     calculator[calculator.operator ? 'input2' : 'input1'] += number;
     //checks if operator is true, if it is display.value = input2.value, else input1.value
+    console.log(calculator);
     display.value = calculator[calculator.operator ? 'input2' : 'input1']
 }
 
+//event listeners
+add_btn.addEventListener("click", function(){
+    calculator['operator'] = "+";
+})
+subtract_btn.addEventListener("click", function(){
+    calculator['operator'] = "-";
+})
+multiply_btn.addEventListener("click", function(){
+    calculator['operator'] = "*";
+})
+divide_btn.addEventListener("click", function(){
+    calculator['operator'] = "/";
+})
