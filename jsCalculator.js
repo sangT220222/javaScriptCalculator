@@ -1,3 +1,5 @@
+var display_screen = document.querySelector("#display");
+
 // object to manage inputs
 const calculator = {
     input1: '0',
@@ -31,3 +33,9 @@ const operate = () => {
     }               
 } 
 
+// Create the functions that populate the display when you click the number buttons. 
+// You should be storing the ‘display value’ in a variable somewhere for use in the next step.
+number_to_display = (number) =>
+{
+    document.getElementById("display").value += number;
+}
