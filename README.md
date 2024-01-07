@@ -1,1 +1,1 @@
-This repository will contain the buildig of a simple calculator through the usuage of Javascript
+This repository will contain the building of a simple calculator through the usuage of Javascript
