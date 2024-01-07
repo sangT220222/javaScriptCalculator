@@ -58,7 +58,8 @@ add_btn.addEventListener("click", function(){
     if(!calculator.operator){
         calculator["operator"] = "+";
     }
-    else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator.operator === "string"){
+    else{
+    // else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator.operator === "string"){
         //do calculation here
         result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
         display.value = result_to_display;
@@ -70,24 +71,24 @@ add_btn.addEventListener("click", function(){
     // console.log(calculator);
 })
 subtract_btn.addEventListener("click", function(){
-    console.log(calculator)
-    if(!calculator.output){
+    console.log(calculator);
+    if(!calculator.operator){
         calculator["operator"] = "-";
     }
-    else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator.operator === "string"){
+    else{
         //do calculation here
-        console.log("WGWR")
-        console.log(calculator);
-        // result_to_display = operate(calculator["input1"],calculator["input2"],"-");
+        console.log("test");
+        // console.log(calculator);
+        // result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
         // display.value = result_to_display;
         // // // console.log("TEST");
         // calculator["input1"] = get_display_value(); 
         // calculator["input2"] = "";
-        // calculator["operator"] = "+";
+        // calculator["operator"] = "-";
     }
 })
 multiply_btn.addEventListener("click", function(){
-    if(!calculator.output){
+    if(!calculator.operator){
         calculator["operator"] = "*";
     }
     calculator["input1"] = get_display_value();
@@ -95,7 +96,7 @@ multiply_btn.addEventListener("click", function(){
     calculator["operator"] = "*";
 })
 divide_btn.addEventListener("click", function(){
-    if(!calculator.output){
+    if(!calculator.operator){
         calculator["operator"] = "/";
     }
     calculator["input1"] = get_display_value();
