@@ -3,4 +3,5 @@ This repository will contain the building of a simple calculator through the usu
 
 The preview of the calculator can be seen below.
 
-<img width="450" alt="image" src="https://github.com/sangT220222/javaScriptCalculator/assets/100322380/7c69d34d-fcbb-4827-9498-5e371ba706a8">
+![image](https://github.com/sangT220222/javaScriptCalculator/assets/100322380/72f5d44c-b7cc-4a85-a2c3-50464e9cf83f)
+
