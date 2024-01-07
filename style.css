@@ -68,3 +68,14 @@ button:hover {
 #clear_button:hover {
     background-color: #c0392b;
 }
+
+p a {
+    text-decoration: none; /* Remove underline */
+    color: #3498db; 
+    font-weight: bold; 
+    font-family: 'Arial', sans-serif; 
+}
+
+p a:hover {
+    color: #2980b9; /* Link color on hover */
+}
