@@ -60,18 +60,17 @@ add_btn.addEventListener("click", function(){
     }
     else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator.operator === "string"){
         //do calculation here
-        console.log(calculator);
         result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
         display.value = result_to_display;
         // // console.log("TEST");
         calculator["input1"] = get_display_value(); 
         calculator["input2"] = "";
-        // calculator["operator"] = "+";
+        calculator["operator"] = "+";
     }
     // console.log(calculator);
 })
 subtract_btn.addEventListener("click", function(){
-    // console.log(typeof calculator.input1)
+    console.log(calculator)
     if(!calculator.output){
         calculator["operator"] = "-";
     }
@@ -79,11 +78,11 @@ subtract_btn.addEventListener("click", function(){
         //do calculation here
         console.log("WGWR")
         console.log(calculator);
-        result_to_display = operate(calculator["input1"],calculator["input2"],"-");
-        display.value = result_to_display;
-        // // console.log("TEST");
-        calculator["input1"] = get_display_value(); 
-        calculator["input2"] = "";
+        // result_to_display = operate(calculator["input1"],calculator["input2"],"-");
+        // display.value = result_to_display;
+        // // // console.log("TEST");
+        // calculator["input1"] = get_display_value(); 
+        // calculator["input2"] = "";
         // calculator["operator"] = "+";
     }
 })
