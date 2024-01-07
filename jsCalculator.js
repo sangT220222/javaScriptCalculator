@@ -129,7 +129,10 @@ divide_btn.addEventListener("click", function(){
 })
 
 equal_btn.addEventListener("click", function(){
-    console.log(calculator);
     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
     display.value = result_to_display;
+    calculator["input1"] = "";
+    calculator["input2"] = "";
+    calculator["operator"] = "";
+
 })
