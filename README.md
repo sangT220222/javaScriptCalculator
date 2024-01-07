@@ -1,5 +1,7 @@
 A simple calculator has been implemented and developed through the usuage of Javascript, HTML and CSS.
 
+Please note the calculator can only be interacted through clicking.
+
 Live preview of thee website can be found here : https://sangt220222.github.io/javaScriptCalculator/
 
 The preview of the calculator can be seen below.
