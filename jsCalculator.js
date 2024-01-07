@@ -48,18 +48,20 @@ number_to_display = (number) =>
 {
     //stores number clicked in increment so in "input1" of object if operator isn't defined, else store in input2
     //checks if operator is true, if it is display.value = input2.value, else input1.value
-    calculator[calculator.operator ? "input2" : "input1"] += number.toString();
-    display.value = calculator[calculator.operator ? "input2" : "input1"]
-    if(calculator.input2 === "0" && calculator.operator === "/"){
+    display.value = "";
+    calculator[calculator["operator"] ? "input2" : "input1"] += number.toString();
+    // console.log(calculator);
+    display.value = calculator[calculator["operator"] ? "input2" : "input1"]
+    if(calculator["input2"] === "0" && calculator["operator"] === "/"){
         alert("INVALID OPERATIONS, CANNOT DIVIDE BY 0");
         clear_display();
     } 
 }
 //function that will clear display and calculator's values
 clear_display = () => {
-    calculator.input1 = "";
-    calculator.input2 = "";
-    calculator.operator = "";
+    calculator["input1"] = "";
+    calculator["input2"] = "";
+    calculator["operator"] = "";
     display.value = "";
 }
 
@@ -127,6 +129,7 @@ divide_btn.addEventListener("click", function(){
 })
 
 equal_btn.addEventListener("click", function(){
+    console.log(calculator);
     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
     display.value = result_to_display;
 })
