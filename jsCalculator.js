@@ -23,8 +23,7 @@ const multiply = (num1, num2) => parseFloat(num1) * parseFloat(num2);
 
 const divide = (num1, num2) => parseFloat(num1) / parseFloat(num2);
 
-// Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
-
+// function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
 const operate = (num1,num2,operator) => {
     switch(operator){
         case "+":
@@ -40,11 +39,11 @@ const operate = (num1,num2,operator) => {
             return;
     }               
 } 
+//function to get the value of that's displayed in the input box
 const get_display_value = () => {
     return document.getElementById("display").value;
 }
-// Create the functions that populate the display when you click the number buttons. 
-// You should be storing the ‘display value’ in a variable somewhere for use in the next step.
+//function that will store number clicked into calculator object
 number_to_display = (number) =>
 {
     //stores number clicked in increment so in "input1" of object if operator isn't defined, else store in input2
@@ -56,6 +55,7 @@ number_to_display = (number) =>
         clear_display();
     } 
 }
+//function that will clear display and calculator's values
 clear_display = () => {
     calculator.input1 = "";
     calculator.input2 = "";
