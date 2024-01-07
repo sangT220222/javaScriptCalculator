@@ -51,7 +51,10 @@ number_to_display = (number) =>
     //checks if operator is true, if it is display.value = input2.value, else input1.value
     calculator[calculator.operator ? "input2" : "input1"] += number.toString();
     display.value = calculator[calculator.operator ? "input2" : "input1"]
-    // console.log(calculator);
+    if(calculator.input2 === "0" && calculator.operator === "/"){
+        alert("INVALID OPERATIONS, CANNOT DIVIDE BY 0");
+        clear_display();
+    } 
 }
 clear_display = () => {
     calculator.input1 = "";
