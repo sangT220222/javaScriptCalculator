@@ -51,7 +51,7 @@ number_to_display = (number) =>
     //checks if operator is true, if it is display.value = input2.value, else input1.value
     calculator[calculator.operator ? "input2" : "input1"] += number.toString();
     display.value = calculator[calculator.operator ? "input2" : "input1"]
-    console.log(calculator);
+    // console.log(calculator);
 }
 //event listeners
 add_btn.addEventListener("click", function(){
@@ -60,29 +60,32 @@ add_btn.addEventListener("click", function(){
     }
     else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator.operator === "string"){
         //do calculation here
-        // console.log(calculator);
-        result_to_display = operate(calculator["input1"],calculator["input2"],"+");
+        console.log(calculator);
+        result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
         display.value = result_to_display;
         // // console.log("TEST");
         calculator["input1"] = get_display_value(); 
         calculator["input2"] = "";
         // calculator["operator"] = "+";
     }
-    console.log(calculator);
-
-    // if(typeof calculator.input2 === 'number'){
-    //     console.log("YEs")
-    // }else{
-    //     console.log("NOPE");
-    // }
+    // console.log(calculator);
 })
 subtract_btn.addEventListener("click", function(){
+    // console.log(typeof calculator.input1)
     if(!calculator.output){
         calculator["operator"] = "-";
     }
-    calculator["input1"] = get_display_value();
-    calculator["input2"] = "";
-    calculator["operator"] = "-";
+    else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator.operator === "string"){
+        //do calculation here
+        console.log("WGWR")
+        console.log(calculator);
+        result_to_display = operate(calculator["input1"],calculator["input2"],"-");
+        display.value = result_to_display;
+        // // console.log("TEST");
+        calculator["input1"] = get_display_value(); 
+        calculator["input2"] = "";
+        // calculator["operator"] = "+";
+    }
 })
 multiply_btn.addEventListener("click", function(){
     if(!calculator.output){
