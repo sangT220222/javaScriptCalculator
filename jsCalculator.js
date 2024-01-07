@@ -53,6 +53,13 @@ number_to_display = (number) =>
     display.value = calculator[calculator.operator ? "input2" : "input1"]
     // console.log(calculator);
 }
+clear_display = () => {
+    calculator.input1 = "";
+    calculator.input2 = "";
+    calculator.operator = "";
+    display.value = "";
+}
+
 //event listeners
 add_btn.addEventListener("click", function(){
     if(!calculator.operator){
