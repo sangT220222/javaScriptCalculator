@@ -7,3 +7,4 @@ The preview of the calculator can be seen below.
 ![image](https://github.com/sangT220222/javaScriptCalculator/assets/100322380/fa59883b-e44b-427d-975d-073e46ca603e)
 
 
+TODO: Implement keyboard interaction
