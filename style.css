@@ -2,6 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -14,11 +15,18 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
+    margin-bottom: 20px; /* Add margin for separation from the footer */
 }
 
 #display {
     width: 80%; /* Adjust the width as needed */
     margin: 0 auto; /* Center the element horizontally */
+}
+
+footer {
+    background-color: #f0f0f0; /* Add your desired background color */
+    text-align: center;
+    padding: 10px;
 }
 
 input {
