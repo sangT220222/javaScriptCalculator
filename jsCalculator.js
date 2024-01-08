@@ -65,67 +65,89 @@ clear_display = () => {
     display.value = "";
 }
 
-//event listeners
-add_btn.addEventListener("click", function(){
-    if(!calculator.operator){
-        calculator["operator"] = "+";
+
+operator_logic = (operator) => {
+    if(!calculator["operator"]){
+        calculator["operator"] = operator;
     }
     else{
-    // else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator.operator === "string"){
+    // else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator["operator"] === "string"){
         //do calculation here
         result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
         display.value = result_to_display;
         // // console.log("TEST");
-        calculator["input1"] = get_display_value(); 
+        calculator["input1"] = result_to_display; 
         calculator["input2"] = "";
-        calculator["operator"] = "+";
+        calculator["operator"] = operator;
     }
+}
+
+//event listeners
+add_btn.addEventListener("click", function(){
+    // if(!calculator["operator"]){
+    //     calculator["operator"] = "+";
+    // }
+    // else{
+    // // else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator["operator"] === "string"){
+    //     //do calculation here
+    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
+    //     display.value = result_to_display;
+    //     // // console.log("TEST");
+    //     calculator["input1"] = get_display_value(); 
+    //     calculator["input2"] = "";
+    //     calculator["operator"] = "+";
+    // }
+    operator_logic("+");
     // console.log(calculator);
 })
 subtract_btn.addEventListener("click", function(){
-    if(!calculator.operator){
-        calculator["operator"] = "-";
-    }
-    else{
-        //do calculation here
-        // console.log("test");
-        result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-        display.value = result_to_display;
-        // // console.log("TEST");
-        calculator["input1"] = get_display_value(); 
-        calculator["input2"] = "";
-        calculator["operator"] = "-";
-    }
+    // if(!calculator["operator"]){
+    //     calculator["operator"] = "-";
+    // }
+    // else{
+    //     //do calculation here
+    //     // console.log("test");
+    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
+    //     display.value = result_to_display;
+    //     // // console.log("TEST");
+    //     calculator["input1"] = get_display_value(); 
+    //     calculator["input2"] = "";
+    //     calculator["operator"] = "-";
+    // }
+    operator_logic("-");
 })
 multiply_btn.addEventListener("click", function(){
-    if(!calculator.operator){
-        calculator["operator"] = "*";
-    }
-    else{
-        //do calculation here
-        // console.log("test");
-        result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-        display.value = result_to_display;
-        // // console.log("TEST");
-        calculator["input1"] = get_display_value(); 
-        calculator["input2"] = "";
-        calculator["operator"] = "*";
-    }
+    // if(!calculator["operator"]){
+    //     calculator["operator"] = "*";
+    // }
+    // else{
+    //     //do calculation here
+    //     // console.log("test");
+    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
+    //     display.value = result_to_display;
+    //     // // console.log("TEST");
+    //     calculator["input1"] = get_display_value(); 
+    //     calculator["input2"] = "";
+    //     calculator["operator"] = "*";
+    // }
+    operator_logic("*");
+
 })
 divide_btn.addEventListener("click", function(){
-    if(!calculator.operator){
-        calculator["operator"] = "/";
-    }
-    else{
-        //do calculation here
-        // console.log("test");
-        result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-        display.value = result_to_display;
-        // // console.log("TEST");
-        calculator["input1"] = get_display_value(); 
-        calculator["input2"] = "";
-        calculator["operator"] = "/";
-    }
+    // if(!calculator["operator"]){
+    //     calculator["operator"] = "/";
+    // }
+    // else{
+    //     //do calculation here
+    //     // console.log("test");
+    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
+    //     display.value = result_to_display;
+    //     // // console.log("TEST");
+    //     calculator["input1"] = get_display_value(); 
+    //     calculator["input2"] = "";
+    //     calculator["operator"] = "/";
+    // }
+    operator_logic("/");
 })
 
 equal_btn.addEventListener("click", function(){
@@ -141,7 +163,27 @@ equal_btn.addEventListener("click", function(){
 document.addEventListener("keydown", (event) =>{
     if(!isNaN(event.key)){
         number_to_display(event.key);
-    } else if(event.key === "Enter"){
-        equal_btn.click();
+    } 
+    else if(['+', '-', '*', '/'].includes(event.key)){
+        if(!calculator["operator"]){
+            calculator["operator"] = event.key;
+        }
+        else{
+        // else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator["operator"] === "string"){
+            //do calculation here
+            result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
+            display.value = result_to_display;
+            // // console.log("TEST");
+            calculator["input1"] = result_to_display; 
+            calculator["input2"] = "";
+            calculator["operator"] = event.key;
+        }
+    }
+    else if(event.key === "="){
+        result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
+        display.value = result_to_display;
+        calculator["input1"] = "";
+        calculator["input2"] = "";
+        calculator["operator"] = "";
     }
 })
