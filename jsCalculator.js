@@ -136,3 +136,12 @@ equal_btn.addEventListener("click", function(){
     calculator["operator"] = "";
 
 })
+
+//keyboard event listener
+document.addEventListener("keydown", (event) =>{
+    if(!isNaN(event.key)){
+        number_to_display(event.key);
+    } else if(event.key === "Enter"){
+        equal_btn.click();
+    }
+})
