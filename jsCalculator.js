@@ -13,6 +13,7 @@ const calculator = {
     input1: "",
     input2: "",
     operator: undefined,
+    after_equal: false,
   };
 
 const add = (num1, num2) => parseFloat(num1) + parseFloat(num2);
@@ -48,14 +49,32 @@ number_to_display = (number) =>
 {
     //stores number clicked in increment so in "input1" of object if operator isn't defined, else store in input2
     //checks if operator is true, if it is display.value = input2.value, else input1.value
-    display.value = "";
-    calculator[calculator["operator"] ? "input2" : "input1"] += number.toString();
+    // console.log("after pressing number");
     // console.log(calculator);
-    display.value = calculator[calculator["operator"] ? "input2" : "input1"]
-    if(calculator["input2"] === "0" && calculator["operator"] === "/"){
-        alert("INVALID OPERATIONS, CANNOT DIVIDE BY 0");
-        clear_display();
-    } 
+    if (calculator["after_equal"] && calculator["operator"] !== "") {
+        // If a calculation is completed, clear the display and reset the calculator
+        // calculator["input2"] = number;
+        display.value = number;
+        calculator["input2"] = number; //sort this out tmr
+        calculator["after_equal"] = false;
+    }
+    else if (calculator["after_equal"] && calculator["operator"] === ""){
+        display.value = number;
+        calculator["input1"] = number; //sort this out tmr
+        calculator["after_equal"] = false;
+    }
+    else{
+        display.value = "";
+        calculator[calculator["operator"] ? "input2" : "input1"] += number.toString();
+        // console.log(calculator);
+        display.value = calculator[calculator["operator"] ? "input2" : "input1"]
+        if(calculator["input2"] === "0" && calculator["operator"] === "/"){
+            alert("INVALID OPERATIONS, CANNOT DIVIDE BY 0");
+            clear_display();
+        } 
+    }
+
+    // console.log(calculator);
 }
 //function that will clear display and calculator's values
 clear_display = () => {
@@ -82,81 +101,35 @@ operator_logic = (operator) => {
     }
 }
 
+equal_logic = () => {
+    result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
+    display.value = result_to_display;
+    calculator["input1"] = result_to_display;
+    calculator["input2"] = "";
+    calculator["operator"] = "";
+    calculator["after_equal"] = true;
+}
+
 //event listeners
 add_btn.addEventListener("click", function(){
-    // if(!calculator["operator"]){
-    //     calculator["operator"] = "+";
-    // }
-    // else{
-    // // else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator["operator"] === "string"){
-    //     //do calculation here
-    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-    //     display.value = result_to_display;
-    //     // // console.log("TEST");
-    //     calculator["input1"] = get_display_value(); 
-    //     calculator["input2"] = "";
-    //     calculator["operator"] = "+";
-    // }
+    console.log("after pressing +")
     operator_logic("+");
-    // console.log(calculator);
+    console.log(calculator);
 })
 subtract_btn.addEventListener("click", function(){
-    // if(!calculator["operator"]){
-    //     calculator["operator"] = "-";
-    // }
-    // else{
-    //     //do calculation here
-    //     // console.log("test");
-    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-    //     display.value = result_to_display;
-    //     // // console.log("TEST");
-    //     calculator["input1"] = get_display_value(); 
-    //     calculator["input2"] = "";
-    //     calculator["operator"] = "-";
-    // }
     operator_logic("-");
 })
 multiply_btn.addEventListener("click", function(){
-    // if(!calculator["operator"]){
-    //     calculator["operator"] = "*";
-    // }
-    // else{
-    //     //do calculation here
-    //     // console.log("test");
-    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-    //     display.value = result_to_display;
-    //     // // console.log("TEST");
-    //     calculator["input1"] = get_display_value(); 
-    //     calculator["input2"] = "";
-    //     calculator["operator"] = "*";
-    // }
     operator_logic("*");
 
 })
 divide_btn.addEventListener("click", function(){
-    // if(!calculator["operator"]){
-    //     calculator["operator"] = "/";
-    // }
-    // else{
-    //     //do calculation here
-    //     // console.log("test");
-    //     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-    //     display.value = result_to_display;
-    //     // // console.log("TEST");
-    //     calculator["input1"] = get_display_value(); 
-    //     calculator["input2"] = "";
-    //     calculator["operator"] = "/";
-    // }
     operator_logic("/");
 })
 
 equal_btn.addEventListener("click", function(){
-    result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-    display.value = result_to_display;
-    calculator["input1"] = "";
-    calculator["input2"] = "";
-    calculator["operator"] = "";
-
+    equal_logic();
+    // console.log(calculator);
 })
 
 //keyboard event listener
@@ -169,7 +142,6 @@ document.addEventListener("keydown", (event) =>{
             calculator["operator"] = event.key;
         }
         else{
-        // else if(typeof calculator.input1 === "string" && typeof calculator.input2 === "string" && typeof calculator["operator"] === "string"){
             //do calculation here
             result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
             display.value = result_to_display;
@@ -180,10 +152,7 @@ document.addEventListener("keydown", (event) =>{
         }
     }
     else if(event.key === "="){
-        result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-        display.value = result_to_display;
-        calculator["input1"] = "";
-        calculator["input2"] = "";
-        calculator["operator"] = "";
+        // console.log(calculator);
+       equal_logic();
     }
 })
