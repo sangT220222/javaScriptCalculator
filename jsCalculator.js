@@ -13,7 +13,7 @@ const calculator = {
     input1: "",
     input2: "",
     operator: undefined,
-    after_equal: false,
+    after_equal: false, //this boolean checks if equal button has been clicked/pressed
   };
 
 const add = (num1, num2) => parseFloat(num1) + parseFloat(num2);
@@ -52,18 +52,19 @@ number_to_display = (number) =>
     // console.log("after pressing number");
     // console.log(calculator);
     if (calculator["after_equal"] && calculator["operator"] !== "") {
-        // If a calculation is completed, clear the display and reset the calculator
-        // calculator["input2"] = number;
+        //this block checks is when calculation needs to be carried forward from the displayed value in input box, after the equal button is pressed
         display.value = number;
-        calculator["input2"] = number; //sort this out tmr
+        calculator["input2"] = number; 
         calculator["after_equal"] = false;
     }
     else if (calculator["after_equal"] && calculator["operator"] === ""){
+        //this block is for brand new calculation after the equal button is pressed
         display.value = number;
         calculator["input1"] = number; //sort this out tmr
         calculator["after_equal"] = false;
     }
     else{
+        //this block is for calculations if equal button has not been clicked/pressed
         display.value = "";
         calculator[calculator["operator"] ? "input2" : "input1"] += number.toString();
         // console.log(calculator);
@@ -76,7 +77,7 @@ number_to_display = (number) =>
 
     // console.log(calculator);
 }
-//function that will clear display and calculator's values
+//function that will erase display and calculator's values
 clear_display = () => {
     calculator["input1"] = "";
     calculator["input2"] = "";
@@ -84,7 +85,7 @@ clear_display = () => {
     display.value = "";
 }
 
-
+//operator logic whenever an operator is selected
 operator_logic = (operator) => {
     if(!calculator["operator"]){
         calculator["operator"] = operator;
@@ -101,6 +102,7 @@ operator_logic = (operator) => {
     }
 }
 
+//equal logic whenever the equal button is selected
 equal_logic = () => {
     result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
     display.value = result_to_display;
@@ -138,18 +140,7 @@ document.addEventListener("keydown", (event) =>{
         number_to_display(event.key);
     } 
     else if(['+', '-', '*', '/'].includes(event.key)){
-        if(!calculator["operator"]){
-            calculator["operator"] = event.key;
-        }
-        else{
-            //do calculation here
-            result_to_display = operate(calculator["input1"],calculator["input2"],calculator["operator"]);
-            display.value = result_to_display;
-            // // console.log("TEST");
-            calculator["input1"] = result_to_display; 
-            calculator["input2"] = "";
-            calculator["operator"] = event.key;
-        }
+        operator_logic(event.key);
     }
     else if(event.key === "="){
         // console.log(calculator);
