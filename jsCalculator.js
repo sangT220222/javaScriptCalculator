@@ -58,7 +58,7 @@ number_to_display = (number) =>
     else if (calculator["after_equal"] && calculator["operator"] === ""){
         //this block is for brand new calculation after the equal button is pressed
         display.value = number;
-        calculator["input1"] = number; //sort this out tmr
+        calculator["input1"] = number; 
         calculator["after_equal"] = false;
     }
     else{
