@@ -16,6 +16,7 @@ const calculator = {
     after_equal: false, //this boolean checks if equal button has been clicked/pressed
   };
 
+//functions below are for respective operations
 const add = (num1, num2) => parseFloat(num1) + parseFloat(num2);
 
 const subtract = (num1, num2) => parseFloat(num1) - parseFloat(num2);
@@ -40,10 +41,7 @@ const operate = (num1,num2,operator) => {
             return;
     }               
 } 
-//function to get the value of that's displayed in the input box
-const get_display_value = () => {
-    return document.getElementById("display").value;
-}
+
 //function that will store number clicked into calculator object
 number_to_display = (number) =>
 {
